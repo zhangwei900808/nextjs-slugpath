@@ -5,11 +5,14 @@ const Username = () => {
   const router = useRouter();
   const { query } = router;
 
+  function back() {
+    router.push("/");
+  }
   if (JSON.stringify(query) != "{}") {
     if (query.username != "zhangwei") {
       return <DefaultErrorPage statusCode={404} />;
     } else {
-      return <div>{query.username}</div>;
+      return <div onClick={back}>{query.username}</div>;
     }
   } else {
     return <>Loading</>;

@@ -1,18 +1,25 @@
 import React from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Nav from "../components/nav";
 
-const Home = ({ name }) => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Home = ({ name }) => {
+  const router = useRouter();
+  function goto() {
+    router.push("/zhangwei");
+  }
+  return (
+    <div>
+      <Head>
+        <title>Home</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    {/* <Nav /> */}
-    <h1>{name}</h1>
-  </div>
-);
+      {/* <Nav /> */}
+      <h1 onClick={goto}>{name}</h1>
+    </div>
+  );
+};
 // This gets called on every request
 export async function getServerSideProps() {
   let awbeci = "123456";
