@@ -10,7 +10,7 @@ function myreducer(state = initialState, action) {
     case actionTypes.CHANGENAME_SUCCESS:
       return {
         ...state,
-        ...{ name: action.name }
+        ...{ name: "JustinZhang" }
       };
     default:
       return state;

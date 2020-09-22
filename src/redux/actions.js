@@ -11,3 +11,10 @@ export function changename(name) {
   }
 }
 
+export function changename_success(data) {
+  return {
+    type: actionTypes.CHANGENAME_SUCCESS,
+    data
+  }
+}
+

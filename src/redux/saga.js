@@ -1,14 +1,12 @@
 import { all, call, delay, put, take, takeLatest } from "redux-saga/effects";
-import { actionTypes } from "./actions";
+import { actionTypes, changename_success } from "./actions";
 
 function* changename() {
   try {
     const res = yield fetch("https://jsonplaceholder.typicode.com/users");
     const data = yield res.json();
-    console.log("data = ", data);
-    // yield put(loadDataSuccess(data));
+    yield put(changename_success());
   } catch (err) {
-    // yield put(failure(err));
   }
 }
 
