@@ -1,9 +1,18 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Nav from "../components/nav";
+// import Nav from "../components/nav";
+import { wrapper } from "../redux/store";
+import { changename } from "../redux/actions";
 
 const Home = ({ name }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changename("zhangwei"));
+  }, [dispatch]);
+
   const router = useRouter();
   function goto() {
     router.push("/zhangwei");
@@ -21,7 +30,7 @@ const Home = ({ name }) => {
   );
 };
 // This gets called on every request
-export async function getServerSideProps() {
+export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   let awbeci = "123456";
   // Fetch data from external API
   // const res = await fetch(`https://.../data`);
@@ -29,5 +38,5 @@ export async function getServerSideProps() {
 
   // Pass data to the page via props
   return { props: { name: "zhangwei" } };
-}
+});
 export default Home;
